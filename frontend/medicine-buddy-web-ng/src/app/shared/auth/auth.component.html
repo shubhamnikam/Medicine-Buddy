@@ -1,0 +1,71 @@
+<div class="container h-100">
+  <div class="row align-items-center h-100" *ngIf="!this.trackInitSetupConfig.isLoginSuccess">
+    <div class="col-6 mx-auto">
+      <div class="card my-5 mT16p">
+        <h4 class="card-header text-center text-dark font-weight-bold">Medicine Buddy</h4>
+        <div class="card-body">
+          <div>
+            <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" formControlName="username" class="form-control" placeholder="enter username" />
+                    <div *ngIf="submitted && loginFormControl['username'].errors" class="invalid-feedback">
+                      <div *ngIf="loginFormControl['username'].errors['required']">Username is required</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--  -->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="password" class="form-control"
+                      placeholder="enter password" />
+                    <div *ngIf="submitted && loginFormControl['password'].errors" class="invalid-feedback">
+                      <div *ngIf="loginFormControl['password'].errors['required']">Password is required</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--  -->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <button class="btn btn-primary col-6 text-white  mt-4 mx-2 mb-2">
+                      <span *ngIf="!isAuthInProgress" >Login</span>
+                      <span *ngIf="isAuthInProgress" class="spinner-border spinner-border-sm ml-2 mb-1"></span>
+                    </button>
+                    <a class="btn btn-outline-secondary col-5 text-dark  mt-4 mx-2 mb-2" (click)="handleOnClickRegister()"
+                    routerLinkActive="router-link-active" >
+                      <span *ngIf="!isAuthInProgress" >Register</span>
+                      <span *ngIf="isAuthInProgress" class="spinner-border spinner-border-sm ml-2 mb-1"></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row align-items-center h-100" *ngIf="this.trackInitSetupConfig.isLoginSuccess">
+    <div class="col-6 mx-auto">
+      <div class="card my-5 mT16p">
+        <h4 class="card-header text-center text-dark font-weight-bold">Login Successful</h4>
+        <div class="card-body">
+            <p class="font-weight-bold">Getting things ready...</p>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+                aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+          </div>
+          <button class="mt-4 mb-2 float-md-right btn btn-sm btn-warning" (click)="handleRelogin()">Stuck..? ReLogin</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

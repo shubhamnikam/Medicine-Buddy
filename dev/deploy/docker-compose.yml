@@ -1,0 +1,37 @@
+services:
+  db-mysql:
+    image: mysql:8.0
+    container_name: db-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ../../db/schema:/docker-entrypoint-initdb.d/
+  # backend-api:
+  #   container_name: backend-api
+  #   restart: always
+  #   build: ./../../backend/MedicineBuddy.App/MedicineBuddy.Main.API
+  #   ports:
+  #     - "5000:80"
+  #   environment:
+  #     - "ASPNETCORE_ENVIRONMENT=Production"
+  #   depends_on:
+  #     - db-mysql
+  # frontend-ui:
+  #   container_name: frontend-ui
+  #   restart: always
+  #   build: ./../../frontend/medicine-buddy-web-ng/Dockerfile
+  #   ports:
+  #     - "4200:80"
+  #   volumes:
+  #     - ./frontend:/app
+  #     - /app/node_modules
+volumes:
+  # frontend:
+  #   driver: local
+  mysql_data:

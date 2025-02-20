@@ -1,0 +1,51 @@
+<div class="margin-navbar-bottom" *ngIf="isUserloggedIn()">
+  <nav class="navbar fixed-top custom-nav-bg-main">
+    <div class="container-fluid d-flex align-items-center">
+      <!-- section - brand & logo -->
+      <div>
+        <a class="navbar-brand">
+          <span class="text-light font-weight-bold ml-3" routerLink="/page/home">Medicine-Buddy</span>
+        </a>
+      </div>
+
+      <!-- section - info (Centered) -->
+      <div class="flex-grow-1 d-flex justify-content-center">
+        <a class="nav-link text-light font-weight-bold">
+          ✨ Get a quick diagnosis for symptoms in 3 simple steps!
+          <span class="badge badge-pill badge-warning">Identify</span>
+          <span class="badge badge-pill badge-primary mx-1">Respond</span>
+          <span class="badge badge-pill badge-success mx-1">Receive</span>
+        </a>
+      </div>
+
+      <!-- section - links -->
+      <div class="d-flex">
+        <a class="nav-link text-light font-weight-bold mr-3" routerLink="/page/home">Home</a>
+        <a class="nav-link text-light font-weight-bold mr-3" routerLink="/page/history">History</a>
+        <a class="nav-link text-light font-weight-bold mr-3" routerLink="/page/profile">Profile</a>
+      </div>
+
+      <!-- section - user info & logout -->
+      <div *ngIf="isUserloggedIn()" class="dropdown">
+        <button class="btn btn-warning btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <span class="mr-1">
+            <fa-icon [icon]="faUser"></fa-icon>
+          </span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownClientCode">
+          <button class="dropdown-item" type="button" (click)='false'>
+            <span class="mr-2">
+              <fa-icon [icon]="faUser"></fa-icon>
+            </span> {{loggedinUser}}
+          </button>
+          <button class="dropdown-item font-weight-bold" type="button" (click)='logoutUser()'>
+            <span class="mr-2">
+              <fa-icon [icon]="faSignOutAlt"></fa-icon>
+            </span> Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,79 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-lg">
+          <div class="card-body">
+            <h3 class="card-title text-center text-primary">Register</h3>
+  
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+              <div class="form-group mb-3">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" class="form-control" formControlName="firstName">
+                <div *ngIf="registerForm.controls['firstName'].invalid && registerForm.controls['firstName'].touched" class="text-danger">
+                  First Name is required and must be at least 2 characters.
+                </div>
+              </div>
+  
+              <div class="form-group mb-3">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" class="form-control" formControlName="lastName">
+                <div *ngIf="registerForm.controls['lastName'].invalid && registerForm.controls['lastName'].touched" class="text-danger">
+                  Last Name is required and must be at least 2 characters.
+                </div>
+              </div>
+  
+              <div class="form-group mb-3">
+                <label for="passwordEncrypted">Password</label>
+                <input type="password" id="passwordEncrypted" class="form-control" formControlName="passwordEncrypted">
+                <div *ngIf="registerForm.controls['passwordEncrypted'].invalid && registerForm.controls['passwordEncrypted'].touched" class="text-danger">
+                  Password must be at least 6 characters.
+                </div>
+              </div>
+  
+              <div class="form-group mb-3">
+                <label for="age">Age</label>
+                <input type="number" id="age" class="form-control" formControlName="age">
+                <div *ngIf="registerForm.controls['age'].invalid && registerForm.controls['age.touched']" class="text-danger">
+                  Age must be between 1 and 150.
+                </div>
+              </div>
+  
+              <div class="form-group mb-3">
+                <label for="height">Height (cm)</label>
+                <input type="number" id="height" class="form-control" formControlName="height">
+                <div *ngIf="registerForm.controls['height'].invalid && registerForm.controls['height.touched']" class="text-danger">
+                  Height must be between 30 and 250 cm.
+                </div>
+              </div>
+  
+              <div class="form-group mb-3">
+                <label for="weight">Weight (kg)</label>
+                <input type="number" id="weight" class="form-control" formControlName="weight">
+                <div *ngIf="registerForm.controls['weight'].invalid && registerForm.controls['weight.touched']" class="text-danger">
+                  Weight must be between 10 and 300 kg.
+                </div>
+              </div>
+              <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary mr-1 w-50" [disabled]="isSubmitting">
+                    <span *ngIf="!isSubmitting">Register</span>
+                    <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm"></span>
+                </button>
+                <button type="submit" class="btn btn-outline-secondary w-50" [disabled]="isSubmitting"  (click)="handleOnClickGotoLogin()">
+                    <span *ngIf="!isSubmitting">Goto Login</span>
+                    <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm"></span>
+                </button>
+            </div>
+
+              <div *ngIf="successMessage" class="alert alert-success mt-3">
+                {{ successMessage }}
+              </div>
+              <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+                {{ errorMessage }}
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

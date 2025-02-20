@@ -1,0 +1,6 @@
+@MedicineBuddy.Main.API_HostAddress = http://localhost:5085
+
+GET {{MedicineBuddy.Main.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
