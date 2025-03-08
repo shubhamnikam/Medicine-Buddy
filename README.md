@@ -29,6 +29,8 @@ npm install -g @angular/cli@15.2.0
 cd frontend/medicine-buddy-web-ng
 npm i
 ng serve --o
+
+open => http://localhost:4200
 ```
 
 ### backend - dotnet 9
@@ -38,6 +40,8 @@ install dotnet 9.0 sdk => https://dotnet.microsoft.com/en-us/download/dotnet/9.0
 cd backend/MedicineBuddy.App
 dotnet build
 dotnet run --project MedicineBuddy.Main.API.csproj
+
+open => http://localhost:5000/swagger
 ```
 
 ### db - MySQL
