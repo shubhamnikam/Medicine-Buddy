@@ -12,13 +12,21 @@
   - Profile
   - History
 
+`
 
+### Login info
+```
+Username: a1
+Pasword: a1
+```
 
 ### frontend - angular 15
 ```
 https://nodejs.org/en/download
 npm install -g @angular/cli@15.2.0
 
+
+cd frontend/medicine-buddy-web-ng
 npm i
 ng serve --o
 ```
@@ -26,8 +34,10 @@ ng serve --o
 ### backend - dotnet 9
 ```
 install dotnet 9.0 sdk => https://dotnet.microsoft.com/en-us/download/dotnet/9.0
+
+cd backend/MedicineBuddy.App
 dotnet build
-dotnet run
+dotnet run --project MedicineBuddy.Main.API.csproj
 ```
 
 ### db - MySQL
