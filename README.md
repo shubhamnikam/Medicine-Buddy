@@ -39,7 +39,7 @@ install dotnet 9.0 sdk => https://dotnet.microsoft.com/en-us/download/dotnet/9.0
 
 cd backend/MedicineBuddy.App
 dotnet build
-dotnet run --project MedicineBuddy.Main.API.csproj
+dotnet run --project MedicineBuddy.Main.API
 
 open => http://localhost:5000/swagger
 ```
