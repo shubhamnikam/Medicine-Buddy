@@ -16,6 +16,9 @@
 
 ### frontend - angular 15
 ```
+https://nodejs.org/en/download
+npm install -g @angular/cli@15.2.0
+
 npm i
 ng serve --o
 ```
@@ -29,6 +32,9 @@ dotnet run
 
 ### db - MySQL
 ```
+MySQL community edition 8+ => https://dev.mysql.com/downloads/installer/
+---
+
 docker install https://www.docker.com/get-started/
 
 docker up => docker-compose up -d
