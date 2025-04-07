@@ -60,7 +60,7 @@ public class AuthController : ControllerBase
 
             var commonOutput = new CommonOutputType<AuthTokenOutputModel>()
             {
-                ContextTitle = ContextTitle.USER,
+                ContextTitle = ContextTitle.AUTH,
                 ContextSubTitle = ContextSubTitle.LOGIN,
                 ContextStatus = ContextStatus.SUCCESS,
                 Message = "success to generate token",
@@ -139,8 +139,8 @@ public class AuthController : ControllerBase
 
             var commonOutput = new CommonOutputType<AuthTokenOutputModel>()
             {
-                ContextTitle = ContextTitle.USER,
-                ContextSubTitle = ContextSubTitle.REFRESHTOKEN,
+                ContextTitle = ContextTitle.AUTH,
+                ContextSubTitle = ContextSubTitle.REFRESH_TOKEN,
                 ContextStatus = ContextStatus.SUCCESS,
                 Message = "success to generate refresh token",
                 Model = new AuthTokenOutputModel()
@@ -159,7 +159,7 @@ public class AuthController : ControllerBase
             var commonOutput = new CommonOutputType<ProblemDetails>()
             {
                 ContextTitle = ContextTitle.AUTH,
-                ContextSubTitle = ContextSubTitle.REFRESHTOKEN,
+                ContextSubTitle = ContextSubTitle.REFRESH_TOKEN,
                 ContextStatus = ContextStatus.FAIL,
                 Message = "Failed to generate refresh token",
                 Model = new ProblemDetails()
@@ -173,4 +173,44 @@ public class AuthController : ControllerBase
         }
     }
 
+    [AllowAnonymous]
+    [HttpPost("Logout")]
+    public ActionResult LogoutAsync([FromBody] UserLogoutInputModel inputModel)
+    {
+        try
+        {
+            if (string.IsNullOrEmpty(inputModel?.UserName))
+            {
+                throw new Exception("Username is empty");
+            }
+
+            var commonOutput = new CommonOutputType<bool>()
+            {
+                ContextTitle = ContextTitle.AUTH,
+                ContextSubTitle = ContextSubTitle.LOGOUT,
+                ContextStatus = ContextStatus.SUCCESS,
+                Message = "success to logout",
+                Model = true
+            };
+            return Ok(commonOutput);
+
+        }
+        catch (Exception ex)
+        {
+            var commonOutput = new CommonOutputType<ProblemDetails>()
+            {
+                ContextTitle = ContextTitle.AUTH,
+                ContextSubTitle = ContextSubTitle.LOGOUT,
+                ContextStatus = ContextStatus.FAIL,
+                Message = "Failed to logout from server",
+                Model = new ProblemDetails()
+                {
+                    Title = ex.Message,
+                    Detail = ex.StackTrace,
+                    Status = (int)HttpStatusCode.Unauthorized,
+                }
+            };
+            return Unauthorized(commonOutput);
+        }
+    }
 }

@@ -132,7 +132,7 @@ public class HomeController : ControllerBase
     }
 
     [HttpPost("GetDiseaseMedicineMapping")]
-    public async Task<ActionResult> GetDiseaseMedicineMappingAsync([FromBody] DiseaseMedicineMappingInputModel inputModel)
+    public async Task<ActionResult> GetDiseaseMedicineMappingAsync([FromBody] GetDiseaseMedicineMappingInputModel inputModel)
     {
         try
         {
@@ -201,13 +201,17 @@ public class HomeController : ControllerBase
                 throw new Exception("CreateUserDiseaseEntry not found");
             }
 
-            var commonOutput = new CommonOutputType<bool?>()
+            var commonOutput = new CommonOutputType<CreateUserDiseaseEntryOutputModel>()
             {
                 ContextTitle = ContextTitle.HOME,
                 ContextSubTitle = ContextSubTitle.DISEASE,
                 ContextStatus = ContextStatus.SUCCESS,
                 Message = $"CreateUserDiseaseEntry success",
-                Model = result
+                Model = new CreateUserDiseaseEntryOutputModel() {
+                    UserId = inputModel.UserId,
+                    DiseaseId = inputModel.DiseaseId,
+                    TransactionId = inputModel.TransactionId,
+                }
             };
             return Ok(commonOutput);
 

@@ -1,0 +1,22 @@
+.inactive-link {
+  color: #eeeeee;
+  text-decoration: none;
+}
+
+.active-link {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.custom-nav-bg-main{
+  background: linear-gradient(90deg, #f8da32 0%, #FA709A 100%) !important;
+}
+
+.custom-card-bg-main{
+  background: linear-gradient(90deg, #fefefe 0%, #eeeeee 100%) !important;
+}
+
+.navbar-bottom-padding {
+  padding-bottom: 56px;
+}

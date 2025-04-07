@@ -2,5 +2,5 @@
 
 public class GetQuestionsInputModel
 {
-    public string TransactionId { get; set; }
+    public required string TransactionId { get; set; }
 }

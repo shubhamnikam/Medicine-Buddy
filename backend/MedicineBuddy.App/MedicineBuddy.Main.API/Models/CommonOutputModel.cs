@@ -19,7 +19,8 @@ public enum ContextSubTitle
 {
     LOGIN = 1,
     REGISTER,
-    REFRESHTOKEN,
+    REFRESH_TOKEN,
+    LOGOUT,
     PROFILE,
     HISTORY,
     DISEASE,

@@ -2,7 +2,7 @@
 
 public class CreateUserDiseaseEntryInputModel
 {
-    public int UserId { get; set; }
-    public int DiseaseId { get; set; }
-    public string TransactionId { get; set; }
+    public required int UserId { get; set; }
+    public required int DiseaseId { get; set; }
+    public required string TransactionId { get; set; }
 }
