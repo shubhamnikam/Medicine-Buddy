@@ -16,3 +16,19 @@ https://github.com/OpenAPITools/openapi-generator
 - Access the environment variables
   - const apiUrl = import.meta.env.VITE_API_URL;
 ```
+
+Remaining:
+```cmd
+pages
+	- profile
+	- history
+fix
+	- fix goto home & reset status
+	- auth guard
+	- navbar disappering
+	- make all states to 1 object state and not separate for pending, data, error
+	- implement toaster
+	- logout => clear refresh token from backend & db
+	- create docker file
+	- add support of docker compose
+```
