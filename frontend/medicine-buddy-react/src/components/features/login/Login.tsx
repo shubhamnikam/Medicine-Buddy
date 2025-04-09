@@ -1,7 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Card, Form, Button, Spinner } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Form,
+  Button,
+  Spinner,
+} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { authReducerLoginStateData, authReducerLoginStateError, authReducerLoginStateStatus, handleAuthenticate } from "../../../core/stores/slices/authSlice";
+import {
+  authReducerLoginStateData,
+  authReducerLoginStateError,
+  authReducerLoginStateStatus,
+  handleAuthenticate,
+} from "../../../core/stores/slices/authSlice";
 import { AppDispatch } from "../../../core/stores";
 import { StateStatus } from "../../../core/stores/stateStatus";
 import { useNavigate } from "react-router";
@@ -9,7 +22,7 @@ import { isUserAuthenticated } from "../../../core/services/auth.service";
 
 const Login = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const status = useSelector(authReducerLoginStateStatus);
   const data = useSelector(authReducerLoginStateData);
@@ -22,17 +35,21 @@ const Login = () => {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     if (formData.username && formData.password) {
-        dispatch(handleAuthenticate(formData))
+      dispatch(handleAuthenticate(formData));
     }
   };
 
-  useEffect(()=> {
-    if(status === StateStatus.SUCCESS && data.isAuthenticated){
-		navigate('/main/home')
-	} else if (status === StateStatus.FAILED && !isUserAuthenticated()) (
-        console.error("Login failed", error)
-	)
-  }, [status, data])
+  const handlerOnClickRegister = (e) => {
+    e.preventDefault();
+    navigate("/auth/register");
+  };
+
+  useEffect(() => {
+    if (status === StateStatus.SUCCESS && data.isAuthenticated) {
+      navigate("/main/home");
+    } else if (status === StateStatus.FAILED && !isUserAuthenticated())
+      console.error("Login failed", error);
+  }, [status, data]);
 
   return (
     <Container className="h-100">
@@ -59,7 +76,7 @@ const Login = () => {
                       Username is required
                     </Form.Control.Feedback>
                   </Form.Group>
-                  
+
                   <Form.Group>
                     <Form.Label>Password</Form.Label>
                     <Form.Control
@@ -74,12 +91,25 @@ const Login = () => {
                       Password is required
                     </Form.Control.Feedback>
                   </Form.Group>
-                  
+
                   <div className="d-flex justify-content-between mt-4">
-                    <Button type="submit" className="col-6" variant="primary" disabled={status === StateStatus.LOADING}>
-                      {status === StateStatus.LOADING ? <Spinner animation="border" size="sm" /> : "Login"}
+                    <Button
+                      type="submit"
+                      className="col-6"
+                      variant="primary"
+                      disabled={status === StateStatus.LOADING}
+                    >
+                      {status === StateStatus.LOADING ? (
+                        <Spinner animation="border" size="sm" />
+                      ) : (
+                        "Login"
+                      )}
                     </Button>
-                    <Button className="col-5" variant="outline-secondary">
+                    <Button
+                      className="col-5"
+                      variant="outline-secondary"
+                      onClick={(e) => handlerOnClickRegister(e)}
+                    >
                       Register
                     </Button>
                   </div>

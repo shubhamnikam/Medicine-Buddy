@@ -46,7 +46,13 @@ const authInitialState = {
 const authSlice = createSlice({
   name: "auth",
   initialState: authInitialState,
-  reducers: {},
+  reducers: {
+    handleResetRegister : (state) => {
+      state.register.status = StateStatus.DEFAULT;
+      state.register.data = null;
+      state.register.error = null;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(handleAuthenticate.pending, (state) => {
@@ -219,8 +225,10 @@ export const authReducerLogoutStateStatus = (state) => state.authReducer.logoutS
 export const authReducerLogoutStateData = (state) => state.authReducer.logoutState.data;
 export const authReducerLogoutStateError = (state) => state.authReducer.logoutState.error;
 
-export const authReducerRegisterStateStatus = (state) => state.authReducer.registerState.status;
-export const authReducerRegisterStateData = (state) => state.authReducer.registerState.data;
-export const authReducerRegisterStateError = (state) => state.authReducer.registerState.error;
+export const authReducerRegisterStateStatus = (state) => state.authReducer.register.status;
+export const authReducerRegisterStateData = (state) => state.authReducer.register.data;
+export const authReducerRegisterStateError = (state) => state.authReducer.register.error;
 
 export default authSlice.reducer;
+export const { handleResetRegister } = authSlice.actions;
+
