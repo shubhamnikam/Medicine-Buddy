@@ -8,12 +8,14 @@ import {
   API_Auth_Login,
   API_Auth_Logout,
   API_Auth_RefreshToken,
+  API_User_Register,
   IS_AUTHENTICATION_SUCCESS,
   REFRESH_TOKEN,
 } from "../utils/appConstants";
 import axiosInstance, { isTokenValid } from "./axiosInstance.service";
 import axiosInstancePublic from "./axiosInstancePublic.service";
 import { getFromSessionStorage } from "./storage.service";
+import { IUserRegisterInputModel } from "../models/input/IUserRegisterInputModel";
 
 export const isUserAuthenticated = (): boolean => {
   let isUserAuthenticated = false;
@@ -65,5 +67,12 @@ export const logout = async (
   input: IUserLogoutInputModel
 ): Promise<ICommonOutputType<boolean>> => {
   const response = await axiosInstance.post(API_Auth_Logout, input);
+  return response.data;
+};
+
+export const register = async (
+  input: IUserRegisterInputModel
+): Promise<ICommonOutputType<string>> => {
+  const response = await axiosInstancePublic.post(API_User_Register, input);
   return response.data;
 };
