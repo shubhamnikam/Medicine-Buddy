@@ -12,7 +12,7 @@ constructor(
   ) {}
 
   ngOnInit(): void {
-    this.router.navigate(['/page/main']);
+    this.router.navigate(['/page/homeInfo']);
   }
 
   ngOnDestroy(): void {

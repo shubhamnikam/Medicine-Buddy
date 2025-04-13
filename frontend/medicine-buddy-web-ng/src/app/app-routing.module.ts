@@ -9,6 +9,7 @@ import { HistoryComponent } from './features/history/history.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { MainComponent } from './features/main/main.component';
 import { RegisterComponent } from './features/register/register.component';
+import { HomeInfoComponent } from './features/home-info/home-info.component';
 
 const routes: Routes = [
   //auth
@@ -22,6 +23,12 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
+        canActivate: [AuthGuard],
+        pathMatch: 'full'
+      },
+      {
+        path: 'homeInfo',
+        component: HomeInfoComponent,
         canActivate: [AuthGuard],
         pathMatch: 'full'
       },

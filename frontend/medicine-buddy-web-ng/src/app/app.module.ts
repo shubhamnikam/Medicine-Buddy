@@ -18,6 +18,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavComponent } from './shared/nav/nav.component';
 import { MainComponent } from './features/main/main.component';
 import { RegisterComponent } from './features/register/register.component';
+import { HomeInfoComponent } from './features/home-info/home-info.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 // IMPORT - INTERNAL
@@ -30,7 +31,8 @@ import { RegisterComponent } from './features/register/register.component';
     HistoryComponent,
     NavComponent,
     MainComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeInfoComponent
   ],
   imports: [
     CommonModule,
