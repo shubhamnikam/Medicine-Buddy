@@ -32,3 +32,14 @@ html {
 .custom-bg-main{
   background-color: #312c3a !important;
 }
+
+body {
+  background-image: url('./assets/bg.webp'); /* Adjust path */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed; /* Optional for parallax effect */
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
